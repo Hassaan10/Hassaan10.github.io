@@ -1,1258 +1,1007 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hassaan Raza — Lead Android & Mobile Engineer</title>
 
-	<!--- basic page needs
-   ================================================== -->
-	<meta charset="utf-8">
-	<title>Hassaan Raza</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+  <!-- SEO -->
+  <meta name="description" content="Hassaan Raza — Lead Android & Mobile Engineer with 9+ years. Android, iOS, Flutter, KMP, AAOS. Fintech specialist, 10M+ MAU. Open to Lead roles in Europe." />
+  <meta name="keywords" content="Android Developer, Mobile Lead, Kotlin, Jetpack Compose, KMP, Flutter, iOS, Swift, Android Automotive, AAOS, Fintech, Clean Architecture, UAE" />
+  <meta name="author" content="Hassaan Raza" />
 
-	<!-- mobile specific metas
-   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hassaan Raza — Lead Android & Mobile Engineer" />
+  <meta property="og:description" content="9+ years building Android, iOS, Flutter & KMP platforms at scale. ADIB Mobile (10M+ users), Android Automotive, Fintech. Open to Lead roles in Europe." />
+  <meta property="og:url" content="https://hassaan10.github.io" />
+  <meta property="og:type" content="website" />
 
-	<!-- CSS
-   ================================================== -->
-	<link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/vendor.css">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Hassaan Raza — Lead Android & Mobile Engineer" />
+  <meta name="twitter:description" content="9+ years. Android · iOS · Flutter · KMP · AAOS. 10M+ users. Open to Lead roles in Europe." />
 
-	<!-- script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
-	<script src="js/pace.min.js"></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-	<!-- favicons
-	================================================== -->
-	<link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    /* ─── Reset & Tokens ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg:       #0B1622;
+      --bg2:      #111E2E;
+      --bg3:      #162436;
+      --border:   #1E3450;
+      --green:    #1D9E75;
+      --green2:   #15765A;
+      --blue:     #3A8FD5;
+      --amber:    #E8A020;
+      --coral:    #D85A30;
+      --purple:   #7F77DD;
+      --teal:     #2EC4B6;
+      --white:    #F0F4F8;
+      --grey:     #7A90A8;
+      --grey2:    #4A6180;
+      --font-head: 'DM Serif Display', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --radius:   10px;
+      --radius-lg: 16px;
+      --transition: 0.2s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--green); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: #2DD4A4; }
+
+    img { max-width: 100%; display: block; }
+
+    /* ─── Layout ─────────────────────────────────────────────── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    section:nth-child(even) { background: var(--bg2); }
+
+    /* ─── Nav ────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(11,22,34,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 500;
+      color: var(--green); letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--grey); letter-spacing: 0.02em; }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ─── Hero ───────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 56px;
+      position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.35;
+    }
+    .hero-glow {
+      position: absolute; top: 20%; right: -10%;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(29,158,117,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; padding: 40px 0; }
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--green); letter-spacing: 0.1em;
+      border: 1px solid var(--green);
+      padding: 4px 12px; border-radius: 4px;
+      margin-bottom: 24px;
+    }
+    .hero-name {
+      font-family: var(--font-head);
+      font-size: clamp(48px, 8vw, 80px);
+      line-height: 1.05; letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .hero-name span { color: var(--green); }
+    .hero-title {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--grey); font-weight: 300;
+      margin-bottom: 28px; max-width: 560px;
+    }
+    .hero-platforms {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 36px;
+    }
+    .platform-tag {
+      font-size: 13px; font-weight: 500;
+      padding: 6px 14px; border-radius: 6px;
+      border: 1px solid; letter-spacing: 0.02em;
+    }
+    .pt-kotlin  { color: var(--coral);  border-color: var(--coral);  background: rgba(216,90,48,0.08); font-size:14px; font-weight:600; }
+    .pt-android { color: var(--green);  border-color: var(--green);  background: rgba(29,158,117,0.08); }
+    .pt-ios     { color: var(--blue);   border-color: var(--blue);   background: rgba(58,143,213,0.08); }
+    .pt-flutter { color: var(--purple); border-color: var(--purple); background: rgba(127,119,221,0.08); }
+    .pt-kmp     { color: var(--amber);  border-color: var(--amber);  background: rgba(232,160,32,0.08); }
+    .pt-swift   { color: #E05D38;       border-color: #E05D38;       background: rgba(224,93,56,0.08); }
+    .pt-dart    { color: var(--teal);   border-color: var(--teal);   background: rgba(46,196,182,0.08); }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--green); color: #fff;
+      padding: 12px 24px; border-radius: var(--radius);
+      font-weight: 500; font-size: 14px;
+      transition: background var(--transition);
+    }
+    .btn-primary:hover { background: var(--green2); color: #fff; }
+    .btn-secondary {
+      background: transparent; color: var(--white);
+      padding: 12px 24px; border-radius: var(--radius);
+      border: 1px solid var(--border);
+      font-weight: 500; font-size: 14px;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .btn-secondary:hover { border-color: var(--green); color: var(--green); }
+
+    /* ─── Section headers ────────────────────────────────────── */
+    .section-label {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--green); letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.1; margin-bottom: 40px;
+    }
+
+    /* ─── Stats ──────────────────────────────────────────────── */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+    }
+    .stat-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px 20px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-head); font-size: 36px;
+      color: var(--green); margin-bottom: 6px;
+    }
+    .stat-lbl { font-size: 13px; color: var(--grey); line-height: 1.4; }
+
+    /* ─── About ──────────────────────────────────────────────── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .about-bio { font-size: 15px; color: rgba(240,244,248,0.8); line-height: 1.8; }
+    .about-bio p { margin-bottom: 16px; }
+    .about-bio p:last-child { margin-bottom: 0; }
+    .about-highlights { display: flex; flex-direction: column; gap: 12px; }
+    .highlight-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px 18px;
+      border-left: 3px solid var(--green);
+    }
+    .highlight-card.blue  { border-left-color: var(--blue); }
+    .highlight-card.amber { border-left-color: var(--amber); }
+    .highlight-card.purple{ border-left-color: var(--purple); }
+    .hl-title { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+    .hl-text  { font-size: 12px; color: var(--grey); line-height: 1.5; }
+
+    /* ─── Profile strip ──────────────────────────────────────── */
+    .profile-strip {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 10px;
+      margin-top: 32px;
+    }
+    .profile-item { font-size: 13px; color: var(--grey); }
+    .profile-item strong { color: var(--white); display: block; font-size: 12px; margin-bottom: 2px; }
+
+    /* ─── Skills ─────────────────────────────────────────────── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .skill-col {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 22px;
+    }
+    .skill-col-title {
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--green); margin-bottom: 14px; font-weight: 500;
+    }
+    .skill-col.strong .skill-col-title { color: var(--blue); }
+    .skill-col.working .skill-col-title { color: var(--amber); }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .stag {
+      font-size: 12px; padding: 4px 9px;
+      border-radius: 5px; border: 1px solid var(--border);
+      color: rgba(240,244,248,0.75); background: var(--bg2);
+    }
+
+    /* ─── Expertise ──────────────────────────────────────────── */
+    .expertise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .exp-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 24px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .exp-card:hover { border-color: var(--green); transform: translateY(-2px); }
+    .exp-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; margin-bottom: 14px;
+    }
+    .exp-icon.g { background: rgba(29,158,117,0.15); }
+    .exp-icon.b { background: rgba(58,143,213,0.15); }
+    .exp-icon.a { background: rgba(232,160,32,0.15); }
+    .exp-icon.p { background: rgba(127,119,221,0.15); }
+    .exp-icon.c { background: rgba(216,90,48,0.15); }
+    .exp-title { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .exp-text  { font-size: 13px; color: var(--grey); line-height: 1.65; }
+
+    /* ─── Experience ─────────────────────────────────────────── */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: ''; position: absolute;
+      left: 0; top: 8px; bottom: 0; width: 1px;
+      background: var(--border);
+    }
+    .timeline-item { padding-left: 28px; margin-bottom: 40px; position: relative; }
+    .timeline-dot {
+      position: absolute; left: -5px; top: 8px;
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--green); border: 2px solid var(--bg);
+    }
+    .tl-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+    .tl-company { font-size: 16px; font-weight: 600; color: var(--white); }
+    .tl-period { font-family: var(--font-mono); font-size: 12px; color: var(--grey); white-space: nowrap; }
+    .tl-role { font-size: 13px; color: var(--green); margin-bottom: 10px; font-style: italic; }
+    .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .tl-bullets li {
+      font-size: 13px; color: rgba(240,244,248,0.7);
+      padding-left: 14px; position: relative; line-height: 1.6;
+    }
+    .tl-bullets li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--green); font-size: 11px; top: 2px;
+    }
+
+    /* ─── Portfolio / Case Studies ───────────────────────────── */
+    .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .case-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .case-card:hover { border-color: var(--green); transform: translateY(-3px); }
+    .case-banner {
+      height: 6px;
+      background: linear-gradient(90deg, var(--green), var(--blue));
+    }
+    .case-banner.purple { background: linear-gradient(90deg, var(--purple), var(--blue)); }
+    .case-banner.teal   { background: linear-gradient(90deg, var(--teal), var(--green)); }
+    .case-body { padding: 24px; }
+    .case-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .ctag {
+      font-size: 11px; padding: 2px 8px; border-radius: 4px;
+      font-weight: 500;
+    }
+    .ctag-green  { background: rgba(29,158,117,0.15);  color: var(--green);  }
+    .ctag-blue   { background: rgba(58,143,213,0.15);  color: var(--blue);   }
+    .ctag-amber  { background: rgba(232,160,32,0.15);  color: var(--amber);  }
+    .ctag-purple { background: rgba(127,119,221,0.15); color: var(--purple); }
+    .ctag-coral  { background: rgba(216,90,48,0.15);   color: var(--coral);  }
+    .case-title { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+    .case-sub { font-size: 12px; color: var(--grey); margin-bottom: 14px; font-style: italic; }
+    .case-section-lbl {
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--grey2); margin: 14px 0 6px;
+    }
+    .case-text { font-size: 13px; color: rgba(240,244,248,0.7); line-height: 1.7; }
+    .case-results { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .case-results li {
+      font-size: 13px; color: rgba(240,244,248,0.75);
+      padding-left: 14px; position: relative;
+    }
+    .case-results li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-size: 11px; }
+    .case-rare {
+      margin-top: 14px; padding: 10px 14px;
+      background: rgba(29,158,117,0.08); border-left: 2px solid var(--green);
+      border-radius: 0 6px 6px 0;
+      font-size: 12px; color: var(--green); line-height: 1.5;
+    }
+
+    /* Small project list -->
+    .project-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 28px; }
+    .project-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 14px 16px;
+      font-size: 13px;
+    }
+    .project-platform {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--grey2); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+    .project-name { color: var(--white); font-weight: 500; font-size: 13px; }
+
+    /* ─── Certificates ───────────────────────────────────────── */
+    .cert-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+    .cert-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 14px 16px;
+      display: flex; gap: 12px; align-items: flex-start;
+      transition: border-color var(--transition);
+    }
+    .cert-card:hover { border-color: var(--green); }
+    .cert-source {
+      font-size: 10px; font-family: var(--font-mono);
+      color: var(--grey2); text-transform: uppercase;
+      letter-spacing: 0.06em; margin-bottom: 3px;
+    }
+    .cert-name {
+      font-size: 13px; color: var(--white); font-weight: 500;
+      line-height: 1.4;
+    }
+    .cert-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0;
+    }
+    .ci-u { background: rgba(232,160,32,0.15); }
+    .ci-l { background: rgba(58,143,213,0.15); }
+    .ci-g { background: rgba(29,158,117,0.15); }
+
+    /* ─── Contact ────────────────────────────────────────────── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .contact-intro { font-size: 15px; color: rgba(240,244,248,0.75); line-height: 1.8; margin-bottom: 24px; }
+    .contact-links { display: flex; flex-direction: column; gap: 12px; }
+    .contact-link {
+      display: flex; gap: 12px; align-items: center;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 14px 16px;
+      color: var(--white); font-size: 14px;
+      transition: border-color var(--transition);
+    }
+    .contact-link:hover { border-color: var(--green); color: var(--white); }
+    .cl-icon { font-size: 18px; }
+    .cl-label { font-size: 11px; color: var(--grey); display: block; }
+    .cl-val { font-size: 14px; color: var(--white); font-weight: 500; }
+    .availability-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(29,158,117,0.12); border: 1px solid rgba(29,158,117,0.3);
+      border-radius: 20px; padding: 8px 16px; margin-bottom: 24px;
+    }
+    .avail-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+    .avail-text { font-size: 13px; color: var(--green); font-weight: 500; }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 28px 0; text-align: center;
+      font-size: 13px; color: var(--grey2);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .stats-row      { grid-template-columns: repeat(2,1fr); }
+      .about-grid     { grid-template-columns: 1fr; }
+      .skills-grid    { grid-template-columns: 1fr; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .case-grid      { grid-template-columns: 1fr; }
+      .cert-grid      { grid-template-columns: 1fr; }
+      .contact-grid   { grid-template-columns: 1fr; }
+      .project-list   { grid-template-columns: repeat(2,1fr); }
+      .nav-links      { display: none; }
+      .profile-strip  { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
-<body id="top">
-
-	<!-- header 
-   ================================================== -->
-	<header>
-		<div class="row">
-
-			<div class="top-bar">
-				<a class="menu-toggle" href="#"><span>Menu</span></a>
-
-				<div class="logo">
-					<a href="index.html">Hassaan Raza</a>
-				</div>
-
-				<nav id="main-nav-wrap">
-					<ul class="main-navigation">
-						<li class="current"><a class="smoothscroll" href="#intro" title="">Home</a></li>
-						<li><a class="smoothscroll" href="#about" title="">About</a></li>
-						<li><a class="smoothscroll" href="#resume" title="">Resume</a></li>
-						<li><a class="smoothscroll" href="#portfolio" title="">Portfolio</a></li>
-						<li><a class="smoothscroll" href="#services" title="">Services</a></li>
-						<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
-						<li><a href="styles.html" title="">Style Demo</a></li>
-					</ul>
-				</nav>
-			</div> <!-- /top-bar -->
-
-		</div> <!-- /row -->
-	</header> <!-- /header -->
-
-	<!-- intro section
-   ================================================== -->
-	<section id="intro">
-
-		<div class="intro-overlay"></div>
-
-		<div class="intro-content">
-			<div class="row">
-
-				<div class="col-twelve">
-
-					<h5>Hello, World.</h5>
-					<h1>I'm Hassaan Raza.</h1>
-
-					<p class="intro-position">
-						<span>Android Developer</span>
-						<span>Flutter Developer</span>
-						<span>iOS Developer</span>
-					</p>
-
-					<a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
-
-				</div>
-
-			</div>
-		</div> <!-- /intro-content -->
-
-		<ul class="intro-social">
-			<li><a href="https://www.github.com/Hassaan10"><i class="fa fa-github"></i></a></li>
-			<li><a href="https://www.linkedin.com/in/hassaan-raza-89a142112/"><i class="fa fa-linkedin"></i></a></li>
-		</ul> <!-- /intro-social -->
-
-	</section> <!-- /intro -->
-
-
-	<!-- about section
-   ================================================== -->
-	<section id="about">
-
-		<div class="row section-intro">
-			<div class="col-twelve">
-
-				<h5>About</h5>
-				<h1>Let me introduce myself.</h1>
-
-				<div class="intro-info">
-
-					<img src="images/cvxcvx.JPG" alt="Profile Picture">
-
-					<p class="lead">"Hi, I’m Hassaan Raza, and I’ve been a Senior Mobile Application Developer for more
-						than 8 years, specializing in crafting seamless and efficient mobile apps. Over the years, I’ve
-						worked with cross-functional teams to create apps that not only meet business objectives but
-						also deliver an outstanding user experience. My expertise spans both native and hybrid
-						technologies, including Swift, Kotlin, Flutter, and KMP. I have a passion for building scalable
-						and performance-driven applications and am always excited about solving complex challenges
-						through technology."</p>
-				</div>
-
-			</div>
-		</div> <!-- /section-intro -->
-
-		<div class="row about-content">
-
-			<div class="col-six tab-full">
-
-				<h3>Profile</h3>
-				<p>Highly educated, bilingual professional, with more than 8 years spent pioneering new technologies.
-					Successful and punctual with exceptional debugging skills. Seeking an opportunity as Senior Software
-					Engineer / Team Lead and create dynamic apps for the mobile applications marketplace.</p>
-
-				<ul class="info-list">
-					<li>
-						<strong>Fullname:</strong>
-						<span>Hassaan Raza</span>
-					</li>
-					<li>
-						<strong>Birth Date:</strong>
-						<span>August 26, 1993</span>
-					</li>
-
-					<li>
-						<strong>Job:</strong>
-						<span>Senior Consultant Mobile Applications Developer</span>
-					</li>
-
-					<li>
-						<strong>Email:</strong>
-						<span>hassaanraza12@gmail.com</span>
-					</li>
-
-				</ul> <!-- /info-list -->
-
-			</div>
-
-			<div class="col-six tab-full">
-
-				<h3>Skills</h3>
-				<ul class="skill-bars">
-					<li>
-						<div class="progress percent90"><span>90%</span></div>
-						<strong>Android</strong>
-					</li>
-
-					<li>
-						<div class="progress percent85"><span>85%</span></div>
-						<strong>Kotlin</strong>
-					</li>
-
-					<li>
-						<div class="progress percent70"><span>70%</span></div>
-						<strong>Java</strong>
-					</li>
-
-					<li>
-						<div class="progress percent95"><span>75%</span></div>
-						<strong>Flutter</strong>
-					</li>
-
-					<li>
-						<div class="progress percent65"><span>65%</span></div>
-						<strong>Dart</strong>
-					</li>
-
-					<li>
-						<div class="progress percent60"><span>60%</span></div>
-						<strong>iOS</strong>
-					</li>
-
-					<li>
-						<div class="progress percent65"><span>65%</span></div>
-						<strong>Swift</strong>
-					</li>
-
-				</ul> <!-- /skill-bars -->
-
-			</div>
-
-		</div>
-
-		<div class="row button-section">
-			<div class="col-twelve">
-				<a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
-				<a href="resources/Hassaan Raza CV Mobile SSE Lead.pdf" title="Download CV" class="button button-primary">Download CV</a>
-			</div>
-		</div>
-
-	</section> <!-- /process-->
-
-
-	<!-- resume Section
-   ================================================== -->
-	<section id="resume" class="grey-section">
-
-		<div class="row section-intro">
-			<div class="col-twelve">
-
-				<h5>Resume</h5>
-				<h1>More of my credentials.</h1>
-
-				<p class="lead">"In my 8 years as a Senior Mobile Application Developer, I’ve had the privilege of
-					leading teams and working on a wide range of projects, from consumer apps to enterprise-level
-					solutions. Most recently, I have been working with the team of senior architecures in a banking app
-					which has over 10 million downloads. I’ve also mentored junior developers and conducted code reviews
-					to maintain high coding standards across the team."</p>
-
-			</div>
-		</div> <!-- /section-intro-->
-
-		<div class="row resume-timeline">
-
-			<div class="col-twelve resume-header">
-
-				<h2>Work Experience</h2>
-
-			</div> <!-- /resume-header -->
-
-			<div class="col-twelve">
-
-				<div class="timeline-wrap">
-
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-briefcase"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Senior Consulatant Mobile Applications</h3>
-							<p>March 2024 - Present</p>
-						</div>
-
-						<div class="timeline-content">
-							<h4>TechVista Systems (Systems Limited)</h4>
-							<ul>
-								<li>Developed and maintained mobile applications for Android and iOS platforms, ensuring
-									high performance and responsiveness.</li>
-								<li>Collaborated with cross-functional teams to define, design, and ship new features,
-									meeting project deadlines and requirements.</li>
-								<li>Applied encryption techniques for data security, safeguarding user information
-									against potential threats.</li>
-								<li>Analyzed and resolved software bugs, improving application stability and user
-									satisfaction across multiple Android versions.</li>
-								<li>Collaborated with cross-functional teams to gather requirements, design solutions,
-									and deliver high-quality products on time.</li>
-							</ul>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-briefcase"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Lead Kotlin Developer (Android)</h3>
-							<p>Jan 2023 - March 2024</p>
-						</div>
-
-						<div class="timeline-content">
-							<h4>Bynolt</h4>
-							<ul>
-								<li>Contributing to the development of Android Automotive Applications</li>
-								<li>Crafted comprehensive documentation for software projects, aiding in maintenance and
-									future development efforts.</li>
-								<li>Managed version control using Git, contributing to streamlined development processes
-									and team collaboration.</li>
-								<li>Conducted thorough debugging and troubleshooting of software applications to
-									identify and resolve issues, improving system reliability.</li>
-							</ul>
-
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-briefcase"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Senior Software Engineer (Android)</h3>
-							<p>Oct 2020 – May 2023</p>
-						</div>
-
-						<div class="timeline-content">
-							<h4>NETSOL Technologies</h4>
-							<ul>
-								<li>Implemented security protocols and encryption techniques, safeguarding sensitive
-									data and complying with industry regulations.</li>
-								<li>Conducted technical workshops and presentations to share knowledge and insights on
-									emerging technologies and industry trends.</li>
-								<li>Fostered a culture of continuous improvement, encouraging innovation and the
-									adoption of cutting-edge technologies within the development team.</li>
-								<li>Oversaw the selection and implementation of development tools and software
-									frameworks, improving team efficiency and productquality.</li>
-							</ul>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-briefcase"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Senior Android Developer</h3>
-							<p>Dec 2019 – Oct 2020</p>
-						</div>
-
-						<div class="timeline-content">
-							<h4>Rebel Technology</h4>
-							<ul>
-								<li>Tailored applications to meet specific client needs, resulting in highly customized
-									and successful products.</li>
-								<li>Worked closely with the UI and UX team to create wireframes, storyboards, and user
-									flows to guide product development.</li>
-								<li>Utilized Firebase for real-time database management, uthentication, and analytics,
-									enriching app functionality.</li>
-								<li>Produced prototype to demonstrate core functionality at various development stages.
-								</li>
-							</ul>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-briefcase"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Senior Android Developer</h3>
-							<p>2019</p>
-						</div>
-
-						<div class="timeline-content">
-							<h4>TechCreatix</h4>
-							<ul>
-								<li>Tailored applications to meet specific client needs, resulting in highly customised
-									and successful products.</li>
-								<li>Led the development of app architecture, ensuring robust, scalable, and maintainable
-									code.</li>
-								<li>Collaborated with cross-functional teams to define, design, and ship new features
-									for improved app performance.</li>
-								<li>Created a mobile app for Android and watch app with BLE for Tizen that easily and
-									efficiently enables users to save and analyze their health status</li>
-							</ul>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-briefcase"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Android Developer</h3>
-							<p>Sept 2017 -Sept 2019</p>
-						</div>
-
-						<div class="timeline-content">
-							<h4>Sprint Solutions</h4>
-							<ul>
-								<li>Researched emerging technologies and trends in the Android ecosystem, proposing
-									innovative solutions to enhance app features.</li>
-								<li>Designed and implemented adaptive UIs for different Android devices, ensuring a
-									seamless experience across platforms.</li>
-								<li>Integrated third-party libraries and APIs, streamlining app functionality and
-									offering advanced features to users.</li>
-								<li>Developed and maintained Android applications, enhancing user experience and
-									interface design for optimal performance.</li>
-							</ul>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-				</div> <!-- /timeline-wrap -->
-
-			</div> <!-- /col-twelve -->
-
-		</div> <!-- /resume-timeline -->
-
-		<div class="row resume-timeline">
-
-			<div class="col-twelve resume-header">
-
-				<h2>Education</h2>
-
-			</div> <!-- /resume-header -->
-
-			<div class="col-twelve">
-
-				<div class="timeline-wrap">
-
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Bachelor's of Science in Information Technology</h3>
-							<p>2013 - 2017</p>
-						</div>
-
-						<div class="timeline-content">
-							<h4>University of Punjab</h4>
-							<p>I hold a Bachelor of Science in Information Technology, which provided me with a strong
-								foundation in computer science, algorithms, and software development principles. This
-								background has been invaluable in my journey as a mobile app developer, helping me
-								understand everything from database management to network security and software
-								engineering principles. My degree also equipped me with problem-solving and analytical
-								skills, which are essential in mobile app development, especially when optimizing app
-								performance or troubleshooting complex issues.</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-				</div> <!-- /timeline-wrap -->
-
-			</div> <!-- /col-twelve -->
-
-		</div> <!-- /resume-timeline -->
-
-		<div class="row resume-timeline">
-
-			<div class="col-twelve resume-header">
-
-				<h2>Certificates</h2>
-
-			</div> <!-- /resume-header -->
-
-			<div class="col-twelve">
-
-				<div class="timeline-wrap">
-
-					<!-- iOS & Swift - The Complete iOS App Development Bootcamp -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Udemy</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a href="https://www.udemy.com/certificate/UC-78577b08-8c42-45ff-90bf-f264b7cb86ad/">iOS
-									& Swift - The Complete iOS App Development Bootcamp</a></h4>
-							<p>From Beginner to iOS App Developer with Just One Course! Fully Updated with a
-								Comprehensive Module Dedicated to SwiftUI!</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Flutter & Dart - The Complete Guide -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Udemy</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a href="https://www.udemy.com/certificate/UC-82e90ad9-2076-4d77-9d46-6b236c1a68c8/">Flutter
-									& Dart - The Complete Guide</a></h4>
-							<p>A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS and
-								Android apps</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Kotlin Coroutines and Flow for Android Development -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Udemy</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a href="https://www.udemy.com/certificate/UC-43cb4ef2-2ffb-45af-b7df-fbfde930bc87/">Kotlin
-									Coroutines and Flow for Android Development</a></h4>
-							<p>The Complete Guide! Get a deep understanding of Kotlin Coroutines and Flow to use them
-								successfully in your Android Apps</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Master CI/CD for Android Developers -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Udemy</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a href="https://www.udemy.com/certificate/UC-5ef171fe-a600-4d72-823b-bfe4c0e030b8/">Master
-									CI/CD for Android Developers</a></h4>
-							<p>Learn Continuous Integration and Continuous Deployment / Delivery to increase your
-								employability in 2023 and beyond!</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Kotlin Multiplatform Masterclass - KMP, KMM - Android, iOS -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Udemy</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a href="https://www.udemy.com/certificate/UC-cae5cf27-a086-419b-a7f3-9858d40ada2f/">Kotlin
-									Multiplatform Masterclass - KMP, KMM - Android, iOS</a></h4>
-							<p>Master iOS and Android app development with KMP - Jetpack Compose, SwiftUI, Ktor,
-								SQLDelight, Clean Architecture, MVI</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Android Jetpack Compose: The Comprehensive Bootcamp -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Udemy</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a href="https://www.udemy.com/certificate/UC-6c8b2814-76df-4de3-a66d-a6a43ad2b496/">Android
-									Jetpack Compose: The Comprehensive Bootcamp</a></h4>
-							<p>Kotlin Android App Development: Firebase Firestore, Hilt & Dagger, ROOM DB, ViewModel,
-								Navigation & Clean Architecture</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Android App Development: Design Patterns for Mobile Architecture -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>LinkedIn</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a
-									href="https://www.linkedin.com/learning/certificates/4fe4636d8a4c06081d0ac8973587134cf15f6d54d1754d079f15d1dd54ea1d51">Android
-									App Development: Design Patterns for Mobile Architecture</a></h4>
-							<p>This course walks through the conversion process from MVC to a layered architecture,
-								covering dependency injection, the coordinator pattern, and data binding.
-							</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Concurrent Programming with Android: Threads, Workers, and Kotlin Coroutines -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>LinkedIn</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a
-									href="https://www.linkedin.com/learning/certificates/aed688f52b1362ea803afdfe96033003e9d05d98d0c45bddd6c73b899c9cd597">Concurrent
-									Programming with Android: Threads, Workers, and Kotlin Coroutines</a></h4>
-							<p>Concurrency matters in Android apps</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Android TDD - Coroutines, Jetpack -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Udemy</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a href="https://www.udemy.com/certificate/UC-1a766433-2f09-4de9-a614-d9caa162c130/">Android
-									TDD Masterclass - Coroutines, Jetpack</a></h4>
-							<p>Master Android app development (Kotlin) with Clean Architecture, Test driven development,
-								HILT, Espresso & Unit Testing</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Android Development NDK - Beginner's guide -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Udemy</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a href="https://www.udemy.com/certificate/UC-1f958b67-7c6d-4894-8975-8db88cc154a0/">Android
-									Development NDK - Beginner's guide</a></h4>
-							<p>Android Development NDK: C++ , FFMPEG , google oboe</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Software Architecture: From Developer to Architect -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>LinkedIn</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a
-									href="https://www.linkedin.com/learning/certificates/d55ebbcd0d687965644977ca70f224bac313cc82c567a6e185193dd9cf54a73f">Software
-									Architecture: From Developer to Architect</a></h4>
-							<p>Wisdom in Software Engineering</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Google IT Support -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Google</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a
-									href="https://www.coursera.org/account/accomplishments/professional-cert/W58QYFZKRRCX?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=prof">Google
-									IT Support</a></h4>
-							<ul>
-								<li>System Administration and IT Infrastructure Services</li>
-								<li>IT Security: Defense against the digital dark arts</li>
-								<li>The Bits and Bytes of Computer Networking</li>
-								<li>Technical Support Fundamentals</li>
-								<li>Operating Systems and You: Becoming a Power User</li>
-							</ul>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Agile Development Practices -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>LinkedIn</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a
-									href="https://www.linkedin.com/learning/certificates/3c6c83a68ae7cf7dea16852e04082eafd90e33ad0578be240402ce929244bfe4">Agile
-									Development Practices</a></h4>
-							<p>Agile Development</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Project Management Foundations: Quality -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>LinkedIn</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a
-									href="https://www.linkedin.com/learning/certificates/8dd811a87de16368d16a08e1114cf90465793124a5344ffd915a700a2b2e7903">Project
-									Management Foundations: Quality</a></h4>
-							<p>Quality in Project Management</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-					<!-- Scrum: The Basics -->
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>LinkedIn</h3>
-						</div>
-
-						<div class="timeline-content">
-							<h4><a
-									href="https://www.linkedin.com/learning/certificates/eacb846bff59defbd5db5301d78383a763edc643c3c730fe6aa0fefa764c8f60">Scrum:
-									The Basics</a></h4>
-							<p>Basics of Scrum</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-				</div> <!-- /timeline-wrap -->
-
-			</div> <!-- /col-twelve -->
-
-		</div> <!-- /resume-timeline -->
-
-	</section> <!-- /features -->
-
-
-	<!-- Portfolio Section
-   ================================================== -->
-	<section id="portfolio">
-
-		<div class="row section-intro">
-			<div class="col-twelve">
-
-				<h5>Portfolio</h5>
-				<h1>Check Out Some of My Works.</h1>
-
-				<p class="lead">I believe the best way to understand my skills and expertise is through the projects I’ve brought to life. Below, you’ll find a selection of my most recent work that showcases my abilities across android app development, ios app development, and flutter projects. Each project highlights my attention to detail, innovative approach, and commitment to delivering high-quality results.
-
-					Whether you're looking for clean, user-friendly Android mobile applications, dynamic iOS Apps, or robust flutter projects, I’ve successfully tackled challenges across different industries and platforms. Click through to see the results for yourself and get a feel for how I can help bring your vision to life.</p>
-
-			</div>
-		</div> <!-- /section-intro-->
-
-		<div class="row portfolio-content">
-
-			<div class="col-twelve">
-
-				<!-- portfolio-wrapper -->
-				<div id="folio-wrapper" class="block-1-3 block-mob-full stack">
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/apple.png" alt="Shutterbug">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">
-											MindsFinds</h3>
-										<span class="folio-types">
-											iOS Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/android.png" alt="Shutterbug">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">
-											Vehicle Log Book</h3>
-										<span class="folio-types">
-											Android Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/android.png" alt="Clouds">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">ShowMgr</h3>
-										<span class="folio-types">
-											Android Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/flutter.png" alt="Salad">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">
-											Classify
-										</h3>
-										<span class="folio-types">
-											Flutter Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/flutter.png" alt="Salad">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">
-											You News
-										</h3>
-										<span class="folio-types">
-											Flutter Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/android.png" alt="Beetle">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">
-											Qoyod point of sale</h3>
-										<span class="folio-types">
-											Android Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/android.png" alt="Lighthouse">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">Photos Editor & Effects</h3>
-										<span class="folio-types">
-											Android Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/android.png" alt="Salad">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">FreeMind</h3>
-										<span class="folio-types">
-											Android Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/android.png" alt="Salad">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">KRIZMA-Connecting book-reading people, Chat, Call</h3>
-										<span class="folio-types">
-											Android Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/android.png" alt="Salad">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">Cyborg
-										</h3>
-										<span class="folio-types">
-											Android Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/android.png" alt="Salad">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">
-											Core Direction
-										</h3>
-										<span class="folio-types">
-											Android Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/android.png" alt="Salad">
-							<a href="#" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">
-											Jupiter
-										</h3>
-										<span class="folio-types">
-											Android Application
-										</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-				</div> <!-- /portfolio-wrapper -->
-
-			</div> <!-- /twelve -->
-
-		</div> <!-- /portfolio-content -->
-
-	</section> <!-- /portfolio -->
-
-
-	<!-- services Section
-   ================================================== -->
-	<section id="services">
-
-		<div class="row services-content">
-
-			<div id="owl-slider" class="owl-carousel services-list">
-
-				<div class="service">
-
-					<span class="icon"><i class="icon-mobile"></i></span>
-
-					<div class="service-content">
-
-						<h3>Android App Development</h3>
-
-						<p class="desc">In today’s mobile-first world, having a custom Android app is essential for businesses looking to reach a broad audience. With over 2.5 billion active Android devices worldwide, Android app development provides a powerful opportunity to engage with customers, streamline business operations, and boost brand visibility. Here's an overview of what Android app development involves, what you can expect, and how it can benefit your business.
-						</p>
-
-					</div>
-
-				</div> <!-- /service -->
-
-				<div class="service">
-
-					<span class="icon"><i class="icon-mobile"></i></span>
-
-					<div class="service-content">
-
-						<h3>iOS App Development</h3>
-
-						<p class="desc">In today’s digital world, developing a high-quality iOS app can be a powerful way for businesses to reach their customers, enhance engagement, and streamline operations. With over 1.5 billion active Apple devices globally, iOS app development offers a lucrative opportunity to connect with users across iPhones, iPads, Apple Watches, and more. Here’s everything you need to know about developing an iOS app for your business.
-						</p>
-
-					</div>
-
-				</div> <!-- /service -->
-
-				<div class="service">
-
-					<span class="icon"><i class="icon-paint-brush"></i></span>
-
-					<div class="service-content">
-
-						<h3>Flutter App Development</h3>
-
-						<p class="desc">As mobile app development continues to evolve, Flutter has emerged as a popular framework for building cross-platform apps. Developed by Google, Flutter allows businesses to create apps that run on both iOS and Android from a single codebase, making it an efficient and cost-effective solution for app development. If you're looking to reach users across both major mobile platforms without doubling your development effort, Flutter could be the perfect choice.
-						</p>
-
-					</div>
-
-				</div> <!-- /service -->
-
-				<div class="service">
-
-					<span class="icon"><i class="icon-earth"></i></span>
-
-					<div class="service-content">
-
-						<h3>Backend Development</h3>
-
-						<p class="desc">n modern web and mobile app development, the backend is the powerhouse that handles everything behind the scenes—from managing databases to user authentication and real-time communication. Node.js is one of the most popular frameworks for backend development, thanks to its performance, scalability, and ability to handle high volumes of data efficiently. Here’s a look at how Node.js can benefit your project and how it fits into the backend development process.
-
-						</p>
-
-					</div>
-
-				</div> <!-- /service -->
-
-			</div> <!-- /services-list -->
-
-		</div> <!-- /services-content -->
-
-	</section> <!-- /services -->
-
-
-	<!-- stats Section
-   ================================================== -->
-	<section id="stats" class="count-up">
-
-		<div class="row">
-			<div class="col-twelve">
-
-				<div class="block-1-4 block-s-1-3 block-tab-1-2 block-mob-full stats-list">
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-pencil-ruler"></i>
-						</div>
-
-						<h3 class="stat-count">
-							50
-						</h3>
-
-						<h5 class="stat-title">
-							Projects Completed
-						</h5>
-
-					</div> <!-- /stat -->
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-mobile"></i>
-						</div>
-
-						<h3 class="stat-count">
-							5000000
-						</h3>
-
-						<h5 class="stat-title">
-							Lines of code
-						</h5>
-
-					</div> <!-- /stat -->
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-cup"></i>
-						</div>
-
-						<h3 class="stat-count">
-							5000
-						</h3>
-
-						<h5 class="stat-title">
-							Coffee Cups
-						</h5>
-
-					</div> <!-- /stat -->
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-clock"></i>
-						</div>
-
-						<h3 class="stat-count">
-							18000
-						</h3>
-
-						<h5 class="stat-title">
-							Hours
-						</h5>
-
-					</div> <!-- /stat -->
-
-				</div> <!-- /stats-list -->
-
-			</div> <!-- /twelve -->
-		</div> <!-- /row -->
-
-	</section> <!-- /stats -->
-
-
-	<!-- contact
-   ================================================== -->
-	<section id="contact">
-
-		<div class="row contact-info">
-
-			<div class="col-three tab-full">
-
-				<div class="icon">
-					<i class="icon-mail"></i>
-				</div>
-
-				<h5>Email Me At</h5>
-
-				<p>hassaanraza12@gmail.com</p>
-
-			</div>
-
-			<div class="col-three tab-full">
-
-				<div class="icon">
-					<i class="icon-phone"></i>
-				</div>
-
-				<h5>Call Me At</h5>
-
-				<p>Phone: (+92) 334 4485366<br>
-				   Mobile: (+971) 56 826 1424<br>
-				</p>
-
-			</div>
-
-			<div class="col-three tab-full">
-
-				<div class="icon">
-					<i class="fa fa-github"></i>
-				</div>
-
-				<h5>Follow me on Github</h5>
-
-				<p>https://www.github.com/Hassaan10</p>
-
-			</div>
-
-			<div class="col-three tab-full">
-
-				<div class="icon">
-					<i class="fa fa-linkedin"></i>
-				</div>
-
-				<h5>Follow me on LinkedIn</h5>
-
-				<p>https://www.linkedin.com/in/hassaan-raza-89a142112</p>
-
-			</div>
-
-		</div> <!-- /contact-info -->
-
-	</section> <!-- /contact -->
-
-	<div id="preloader">
-		<div id="loader"></div>
-	</div>
-
-	<!-- Java Script
-   ================================================== -->
-	<script src="js/jquery-2.1.3.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/main.js"></script>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">hassaan.raza</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container hero-content">
+    <div class="hero-tag">Available for Lead roles · Europe</div>
+    <h1 class="hero-name">Hassaan<br/><span>Raza</span></h1>
+    <p class="hero-title">Lead Android &amp; Mobile Engineer · 9+ years building platforms at scale</p>
+    <div class="hero-platforms">
+      <span class="platform-tag pt-kotlin">Kotlin</span>
+      <span class="platform-tag pt-android">Android</span>
+      <span class="platform-tag pt-ios">iOS</span>
+      <span class="platform-tag pt-flutter">Flutter</span>
+      <span class="platform-tag pt-kmp">KMP</span>
+      <span class="platform-tag pt-swift">Swift</span>
+      <span class="platform-tag pt-dart">Dart</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Get in touch</a>
+      <a href="#portfolio" class="btn-secondary">View my work</a>
+      <a href="https://hassaan10.github.io/resources/Hassaan Raza CV Mobile SSE Lead.pdf" class="btn-secondary" target="_blank">Download CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ STATS ═══════════ -->
+<section style="padding:48px 0; background:var(--bg2);">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">10M+</div>
+        <div class="stat-lbl">Users Reached</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">9+</div>
+        <div class="stat-lbl">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4</div>
+        <div class="stat-lbl">Platforms Shipped<br/><span style="font-size:11px;color:var(--grey2)">Android · iOS · Flutter · AAOS</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">12+</div>
+        <div class="stat-lbl">Production Apps</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Let me introduce myself</h2>
+
+    <div class="about-grid">
+      <div>
+        <div class="about-bio">
+          <p>9 years. Android, iOS, Flutter, KMP. I've built mobile platforms from the ground up — and shipped them to millions of users across fintech, automotive, and consumer products.</p>
+          <p>Most engineers pick a platform and stay there. I went deep on Android first — Kotlin, Jetpack Compose, Clean Architecture, MVI, multi-module systems — then deliberately expanded into iOS (Swift, SwiftUI, Combine), Flutter, and Kotlin Multiplatform. Not to pad a CV. Because real mobile leadership means owning the full stack, not just one half of it.</p>
+          <p>I'm PSM I certified — so alongside the technical depth, I bring the process discipline to lead a team, run sprints, and ship predictably.</p>
+          <p>Open to Lead Android or Mobile Lead roles in Europe. Remote-first or relocation with visa sponsorship support.</p>
+        </div>
+
+        <div class="profile-strip">
+          <div class="profile-item"><strong>Name</strong>Hassaan Raza</div>
+          <div class="profile-item"><strong>Location</strong>Abu Dhabi, UAE</div>
+          <div class="profile-item"><strong>Email</strong>hassaanraza12@gmail.com</div>
+          <div class="profile-item"><strong>Mobile</strong>+971 568261424</div>
+          <div class="profile-item"><strong>Target Role</strong>Lead Mobile Engineer</div>
+          <div class="profile-item"><strong>Availability</strong>Open to Europe</div>
+        </div>
+      </div>
+
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <div class="hl-title">→ ADIB Mobile — 10M+ Users</div>
+          <div class="hl-text">Contributed to UAE's top-rated banking app. Designed multi-module architecture patterns adopted across a 12-engineer team. Zero failed production deployments over 12 months.</div>
+        </div>
+        <div class="highlight-card blue">
+          <div class="hl-title">→ Kotlin Multiplatform (KMP) in Production</div>
+          <div class="hl-text">Implemented shared domain and data layers across Android and iOS — eliminating ~8,000 lines of duplicate business logic and reducing cross-platform bugs by ~60%.</div>
+        </div>
+        <div class="highlight-card amber">
+          <div class="hl-title">→ Android Automotive (AAOS)</div>
+          <div class="hl-text">Built in-vehicle infotainment apps with OEM hardware integration, CAN bus, and HVAC APIs. Production AAOS experience held by fewer than 5% of Android engineers.</div>
+        </div>
+        <div class="highlight-card purple">
+          <div class="hl-title">→ Acting Technical Lead</div>
+          <div class="hl-text">Currently driving architecture decisions and engineering standards at Avrioc Technologies across fintech and real-time communication platforms.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SKILLS ═══════════ -->
+<section id="skills" style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label">Skills</div>
+    <h2 class="section-title">Technical toolkit</h2>
+    <div class="skills-grid">
+      <div class="skill-col">
+        <div class="skill-col-title">Primary</div>
+        <div class="skill-tags">
+          <span class="stag">Android SDK</span><span class="stag">Kotlin</span>
+          <span class="stag">Jetpack Compose</span><span class="stag">Clean Architecture</span>
+          <span class="stag">MVI / MVVM</span><span class="stag">Multi-module</span>
+          <span class="stag">Coroutines & Flow</span><span class="stag">Hilt / Dagger</span>
+          <span class="stag">Room / DataStore</span><span class="stag">Retrofit / Ktor</span>
+          <span class="stag">CI/CD</span><span class="stag">GitHub Actions</span>
+          <span class="stag">Fastlane</span><span class="stag">Jenkins</span>
+        </div>
+      </div>
+      <div class="skill-col strong">
+        <div class="skill-col-title">Strong</div>
+        <div class="skill-tags">
+          <span class="stag">iOS / Swift</span><span class="stag">SwiftUI</span>
+          <span class="stag">Combine</span><span class="stag">Flutter</span>
+          <span class="stag">Dart</span><span class="stag">KMP</span>
+          <span class="stag">SQLDelight</span><span class="stag">Android Automotive</span>
+          <span class="stag">AAOS</span><span class="stag">Firebase</span>
+          <span class="stag">ProGuard / R8</span><span class="stag">Espresso</span>
+          <span class="stag">MockK / JUnit</span>
+        </div>
+      </div>
+      <div class="skill-col working">
+        <div class="skill-col-title">Working Knowledge</div>
+        <div class="skill-tags">
+          <span class="stag">Java</span><span class="stag">NDK / C++</span>
+          <span class="stag">AOSP</span><span class="stag">Tizen OS</span>
+          <span class="stag">XCTest</span><span class="stag">Node.js</span>
+          <span class="stag">GraphQL</span><span class="stag">Agile / Scrum</span>
+          <span class="stag">PSM I Certified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERTISE ═══════════ -->
+<section id="expertise">
+  <div class="container">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Areas of deep specialisation</h2>
+    <div class="expertise-grid">
+      <div class="exp-card">
+        <div class="exp-icon g">🤖</div>
+        <div class="exp-title">Android Platform Engineering</div>
+        <div class="exp-text">Deep native Android using Kotlin, Jetpack Compose, Clean Architecture, and MVI. I specialise in multi-module architectures that scale — enabling parallel team development, fast CI cycles, and long-term maintainability. Experience spans fintech, real-time communication, and enterprise apps serving millions of daily users.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon b">📱</div>
+        <div class="exp-title">Cross-Platform Mobile (KMP &amp; Flutter)</div>
+        <div class="exp-text">Production Kotlin Multiplatform experience — sharing domain logic and data layers across Android and iOS from a single Kotlin codebase. Flutter delivery for consumer apps. I approach cross-platform pragmatically: share what makes sense, stay native where it matters.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon b">🍎</div>
+        <div class="exp-title">iOS Engineering</div>
+        <div class="exp-text">Production Swift and SwiftUI development with Combine-backed ViewModels, Alamofire networking, and XCTest coverage. Delivered iOS features for ADIB Mobile (10M+ users) and contributed to cross-platform architecture patterns adopted across Android and iOS teams.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon a">🚗</div>
+        <div class="exp-title">Android Automotive (AAOS)</div>
+        <div class="exp-text">One of fewer than 5% of Android engineers with production AAOS experience. Built in-vehicle infotainment apps with OEM hardware integration — CAN bus, HVAC APIs, vehicle sensors, media playback, and distraction-optimised UX built to Google's Automotive safety standards.</div>
+      </div>
+      <div class="exp-card" style="grid-column: span 2;">
+        <div class="exp-icon p">🏗️</div>
+        <div class="exp-title">Mobile Architecture &amp; Technical Leadership</div>
+        <div class="exp-text">I define architecture, not just implement it. Clean Architecture, MVVM, MVI, modularisation, CI/CD pipeline design, code review standards, and team mentoring. Currently acting as Technical Lead at Avrioc Technologies, owning all architecture decisions across two high-scale mobile products. PSM I certified — I bring process discipline alongside technical depth.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<section id="experience" style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Career timeline</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-header">
+          <span class="tl-company">Avrioc Technologies</span>
+          <span class="tl-period">Sep 2025 – Present</span>
+        </div>
+        <div class="tl-role">Senior Software Engineer (Acting Technical Lead) · Abu Dhabi, UAE</div>
+        <ul class="tl-bullets">
+          <li>Drive Android and iOS architecture and technical direction across a fintech payment app and real-time communication platform, acting as technical lead while holding SSE designation.</li>
+          <li>Designed Clean Architecture + MVI multi-module platform from the ground up, decoupling feature teams and enabling parallel development across 8+ modules.</li>
+          <li>Shipped biometric authentication and AES-256 encrypted API communication layer, passing PCI-DSS third-party security audit with zero critical findings.</li>
+          <li>Reduced production crash rate by 20% through structured Kotlin Coroutines exception handling and Crashlytics-driven alerting.</li>
+          <li>Cut Gradle build time by 30% and CI cycle by 3–4 minutes via build caching, configuration on-demand, and composite builds.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-header">
+          <span class="tl-company">TechVista (Systems Limited)</span>
+          <span class="tl-period">Mar 2024 – Aug 2025</span>
+        </div>
+        <div class="tl-role">Senior Consultant, Mobile Applications · Abu Dhabi, UAE</div>
+        <ul class="tl-bullets">
+          <li>Contributed to ADIB Mobile — UAE's top-rated banking app with 10M+ registered users — delivering Kotlin/Compose features across accounts, payments, and cards surfaces.</li>
+          <li>Built production Swift/SwiftUI screens with Combine-backed ViewModels, adopted by 4M+ iOS users.</li>
+          <li>Implemented KMP shared domain and data modules, eliminating ~8,000 lines of duplicate business logic across Android and iOS.</li>
+          <li>Owned Jenkins and GitHub Actions pipelines; achieved zero failed production deployments over 12 months.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-header">
+          <span class="tl-company">Bynolt</span>
+          <span class="tl-period">Jan 2023 – Mar 2024</span>
+        </div>
+        <div class="tl-role">Lead Android Developer · Remote (Part-time alongside NETSOL)</div>
+        <ul class="tl-bullets">
+          <li>Built and shipped Android Automotive (AAOS) applications with OEM hardware integration, CAN bus, HVAC APIs, and distraction-optimised UX.</li>
+          <li>Defined Android architecture standards and release processes for a 4-person team.</li>
+          <li>Improved crash-free rate by 15% by resolving systemic ANRs, memory leaks, and concurrency issues.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-header">
+          <span class="tl-company">CubyCode</span>
+          <span class="tl-period">Oct 2021 – Apr 2024</span>
+        </div>
+        <div class="tl-role">Android / Flutter Developer · Remote</div>
+        <ul class="tl-bullets">
+          <li>Developed native Android (Kotlin) and iOS (Swift) applications and customisable app templates for global marketplace distribution.</li>
+          <li>Delivered Flutter applications across e-commerce, social networking, education, and utility domains.</li>
+          <li>Integrated RESTful APIs, push notifications, real-time chat, and media upload features across platforms.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-header">
+          <span class="tl-company">NETSOL Technologies</span>
+          <span class="tl-period">Oct 2020 – May 2023</span>
+        </div>
+        <div class="tl-role">Senior Software Engineer, Android · Lahore, Pakistan</div>
+        <ul class="tl-bullets">
+          <li>Built enterprise financial applications — mPOS (mobile origination), mCollector (field collections), and mDealer (dealer inventory management) — part of NETSOL's NFS Ascent platform deployed across 30+ countries.</li>
+          <li>Led a team of 6 Android engineers; drove Kotlin Coroutines and Flow adoption across 3 active codebases, replacing RxJava.</li>
+          <li>Delivered internal workshops on Kotlin Coroutines, Compose, and Clean Architecture for 12 engineers.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-header">
+          <span class="tl-company">Earlier Roles</span>
+          <span class="tl-period">2017 – 2021</span>
+        </div>
+        <div class="tl-role">Rebel Technology · TechCreatix · Sprint Solutions</div>
+        <ul class="tl-bullets">
+          <li>Developed consumer and enterprise Android apps across fitness, logistics, finance, and SDK-based products.</li>
+          <li>Built a fitness tracking Android app with Tizen OS companion smartwatch app using Samsung Health SDK and BLE.</li>
+          <li>Delivered 12+ production applications across Play Store and enterprise MDM channels.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PORTFOLIO ═══════════ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Selected work</h2>
+
+    <!-- Case Studies -->
+    <div class="case-grid">
+
+      <div class="case-card">
+        <div class="case-banner"></div>
+        <div class="case-body">
+          <div class="case-tags">
+            <span class="ctag ctag-green">Android · Kotlin · KMP</span>
+            <span class="ctag ctag-blue">10M+ Users</span>
+            <span class="ctag ctag-amber">Fintech</span>
+          </div>
+          <div class="case-title">ADIB Mobile — Multi-Module Architecture at Scale</div>
+          <div class="case-sub">TechVista (Systems Limited) · 2024–2025</div>
+
+          <div class="case-section-lbl">The Problem</div>
+          <div class="case-text">ADIB Mobile's monolithic Android codebase was bottlenecking a 12-engineer team. Merge conflicts were frequent, build times were long, and new feature work risked regressions across the app.</div>
+
+          <div class="case-section-lbl">What I Built</div>
+          <div class="case-text">Designed Clean Architecture + MVI multi-module structure with strict module boundaries. Implemented KMP shared domain and data layers across Android and iOS, eliminating ~8,000 lines of duplicate business logic. Extended CI/CD to validate module boundaries automatically on every PR.</div>
+
+          <div class="case-section-lbl">Results</div>
+          <ul class="case-results">
+            <li>Architecture adopted across all 12 Android engineers</li>
+            <li>New-feature scaffolding time reduced by ~40%</li>
+            <li>Cross-platform divergence bugs reduced by ~60%</li>
+            <li>Zero failed production deployments over 12 months</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-banner amber"></div>
+        <div class="case-body">
+          <div class="case-tags">
+            <span class="ctag ctag-amber">Android Automotive · AAOS</span>
+            <span class="ctag ctag-coral">AOSP</span>
+            <span class="ctag ctag-purple">Top 5% Expertise</span>
+          </div>
+          <div class="case-title">Android Automotive OS — In-Vehicle Infotainment</div>
+          <div class="case-sub">Bynolt · 2023–2024</div>
+
+          <div class="case-section-lbl">The Challenge</div>
+          <div class="case-text">Building for a car dashboard means strict constraints: sub-second boot time, distraction-optimised UX to meet automotive safety standards, and real hardware integration with vehicle systems — where failures affect driver safety.</div>
+
+          <div class="case-section-lbl">What I Built</div>
+          <div class="case-text">AAOS applications for infotainment, navigation, media playback, and vehicle settings with OEM hardware integration: CAN bus, HVAC controls, sensor inputs, and MediaBrowserService for audio routing. Worked at AOSP platform level to customise launcher behaviour and embedded services.</div>
+
+          <div class="case-section-lbl">Stack</div>
+          <div class="case-text" style="margin-bottom:12px">AAOS · AOSP · Car App Library · Kotlin · Systrace · CAN bus · OEM hardware targets</div>
+
+          <div class="case-rare">Fewer than 5% of Android engineers have shipped production AAOS work. This experience opens conversations at Google, BMW, Cariad, Stellantis, and other automotive tech teams.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Comera Pay + NETSOL case studies -->
+    <div class="case-grid" style="margin-top:24px">
+
+      <div class="case-card">
+        <div class="case-banner purple"></div>
+        <div class="case-body">
+          <div class="case-tags">
+            <span class="ctag ctag-purple">Android · iOS · Kotlin · Swift</span>
+            <span class="ctag ctag-green">Fintech · Payments</span>
+            <span class="ctag ctag-blue">CBUAE Licensed</span>
+          </div>
+          <div class="case-title">Comera Pay — Digital Payments Super-App</div>
+          <div class="case-sub">Avrioc Technologies · 2025–Present · Abu Dhabi, UAE</div>
+
+          <div class="case-section-lbl">About the Product</div>
+          <div class="case-text">Comera Pay is a Central Bank of UAE licensed and regulated digital payments platform — a subsidiary of The Royal Group, one of Abu Dhabi's most prominent conglomerates. The app serves individuals and businesses across the UAE with digital wallets, P2P transfers, QR payments, remittances, bill payments, multi-currency accounts, and merchant POS solutions. Partnered with Arab Financial Services (AFS) for merchant acquiring and integrated with Abu Dhabi's TAMM government services platform.</div>
+
+          <div class="case-section-lbl">My Contribution</div>
+          <div class="case-text">Acting as Technical Lead on Android and iOS development at Avrioc Technologies. Responsible for mobile architecture decisions, secure payment flow implementation, and cross-platform engineering standards across the Android and iOS applications.</div>
+
+          <div class="case-section-lbl">Key Technical Work</div>
+          <ul class="case-results">
+            <li>Architected Clean Architecture + MVI multi-module platform for the Android app</li>
+            <li>Implemented AES-256 encrypted API communication and biometric authentication (PCI-DSS compliant)</li>
+            <li>Built real-time transaction tracking, QR payment flows, and multi-currency wallet features</li>
+            <li>Established CI/CD pipelines (GitHub Actions + Fastlane) for both Android and iOS releases</li>
+            <li>Reduced production crash rate by 20% through structured concurrency and Crashlytics monitoring</li>
+          </ul>
+
+          <div class="case-rare" style="margin-top:14px">
+            Live on Google Play &amp; App Store · CBUAE regulated · Backed by Royal Group, Abu Dhabi · Partnered with TAMM government platform
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-banner teal"></div>
+        <div class="case-body">
+          <div class="case-tags">
+            <span class="ctag ctag-green">Android · Kotlin</span>
+            <span class="ctag ctag-blue">Enterprise · B2B</span>
+            <span class="ctag ctag-amber">30+ Countries</span>
+            <span class="ctag ctag-purple">Asset Finance</span>
+          </div>
+          <div class="case-title">NETSOL NFS Ascent — Enterprise Mobile Suite</div>
+          <div class="case-sub">NETSOL Technologies · 2020–2023 · Lahore, Pakistan</div>
+
+          <div class="case-section-lbl">About the Platform</div>
+          <div class="case-text">NETSOL Technologies (NASDAQ: NTWK) is a global provider of asset finance and leasing software, trusted by BMW, Toyota, and Fortune 500 companies. Their NFS Ascent platform manages $500B+ in global assets, with 300+ implementations across 30+ countries. I contributed to three enterprise-grade Android applications in their NFS Digital mobile suite — all distributed directly to enterprise clients rather than public app stores.</div>
+
+          <div class="case-section-lbl">mPOS — Mobile Point of Sale</div>
+          <div class="case-text" style="margin-bottom:10px">A complete credit origination and conversion platform for field sales teams — enabling menu selling, quick credit applications, deal management, and real-time back-office communication. After implementation at one client, 60% of all originations moved through mPOS within 90 days of go-live. Deployed across Indonesia, UK, China, Australia, and other markets.</div>
+
+          <div class="case-section-lbl">mCollector — Field Collections</div>
+          <div class="case-text" style="margin-bottom:10px">Intelligent collections management app empowering field agents to complete all collections tasks on the go — routing assignments via a smart workflow engine, eliminating back-office check-ins. One Indonesian deployment alone covered 1,300+ agents across 250 branches.</div>
+
+          <div class="case-section-lbl">mDealer — Dealer Inventory Management</div>
+          <div class="case-text" style="margin-bottom:10px">Mobile platform giving dealer partners real-time visibility and control over inventories, financing options, and dealership operations with minimal manual effort.</div>
+
+          <div class="case-section-lbl">My Contribution</div>
+          <ul class="case-results">
+            <li>Built and maintained all three Android applications using Clean Architecture and MVVM</li>
+            <li>Implemented offline-first data sync, biometric auth, barcode scanning, Bluetooth printing, and digital signatures</li>
+            <li>Led a team of 6 Android engineers; drove Kotlin Coroutines and Flow adoption across 3 codebases</li>
+            <li>Contributed to CI/CD pipeline integration and multi-environment versioning strategy</li>
+            <li>Mentored junior developers and ran internal training on Kotlin Coroutines and Jetpack Compose</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <h3 style="font-size:16px;color:var(--grey);margin:40px 0 16px;font-weight:400;">Other shipped applications</h3>
+    <div class="project-list">
+      <div class="project-card"><div class="project-platform">iOS</div><div class="project-name">MindsFinds</div></div>
+      <div class="project-card"><div class="project-platform">Android</div><div class="project-name">Vehicle Log Book</div></div>
+      <div class="project-card"><div class="project-platform">Android</div><div class="project-name">ShowMgr</div></div>
+      <div class="project-card"><div class="project-platform">Flutter</div><div class="project-name">Classify</div></div>
+      <div class="project-card"><div class="project-platform">Flutter</div><div class="project-name">You News</div></div>
+      <div class="project-card"><div class="project-platform">Android</div><div class="project-name">Qoyod Point of Sale</div></div>
+      <div class="project-card"><div class="project-platform">Android</div><div class="project-name">Photos Editor &amp; Effects</div></div>
+      <div class="project-card"><div class="project-platform">Android</div><div class="project-name">FreeMind</div></div>
+      <div class="project-card"><div class="project-platform">Android</div><div class="project-name">KRIZMA — Social Reading App</div></div>
+      <div class="project-card"><div class="project-platform">Android + Tizen</div><div class="project-name">Fitness + Smartwatch App</div></div>
+    </div>
+    <p style="font-size:13px;color:var(--grey2);margin-top:16px;">
+      Source code and project details: <a href="https://github.com/Hassaan10" target="_blank">github.com/Hassaan10</a>
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ CERTIFICATIONS ═══════════ -->
+<section id="certifications" style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label">Certifications</div>
+    <h2 class="section-title">Continuous learning</h2>
+    <div class="cert-grid">
+
+      <a class="cert-card" href="https://www.udemy.com/certificate/UC-cae5cf27-a086-419b-a7f3-9858d40ada2f/" target="_blank">
+        <div class="cert-icon ci-u">🎓</div>
+        <div><div class="cert-source">Udemy</div><div class="cert-name">Kotlin Multiplatform Masterclass — KMP, KMM, Android, iOS</div></div>
+      </a>
+      <a class="cert-card" href="https://www.udemy.com/certificate/UC-6c8b2814-76df-4de3-a66d-a6a43ad2b496/" target="_blank">
+        <div class="cert-icon ci-u">🎓</div>
+        <div><div class="cert-source">Udemy</div><div class="cert-name">Android Jetpack Compose: The Comprehensive Bootcamp</div></div>
+      </a>
+      <a class="cert-card" href="https://www.udemy.com/certificate/UC-43cb4ef2-2ffb-45af-b7df-fbfde930bc87/" target="_blank">
+        <div class="cert-icon ci-u">🎓</div>
+        <div><div class="cert-source">Udemy</div><div class="cert-name">Kotlin Coroutines and Flow for Android Development</div></div>
+      </a>
+      <a class="cert-card" href="https://www.udemy.com/certificate/UC-1a766433-2f09-4de9-a614-d9caa162c130/" target="_blank">
+        <div class="cert-icon ci-u">🎓</div>
+        <div><div class="cert-source">Udemy</div><div class="cert-name">Android TDD Masterclass — Coroutines, Jetpack, HILT, Espresso</div></div>
+      </a>
+      <a class="cert-card" href="https://www.udemy.com/certificate/UC-5ef171fe-a600-4d72-823b-bfe4c0e030b8/" target="_blank">
+        <div class="cert-icon ci-u">🎓</div>
+        <div><div class="cert-source">Udemy</div><div class="cert-name">Master CI/CD for Android Developers</div></div>
+      </a>
+      <a class="cert-card" href="https://www.udemy.com/certificate/UC-78577b08-8c42-45ff-90bf-f264b7cb86ad/" target="_blank">
+        <div class="cert-icon ci-u">🎓</div>
+        <div><div class="cert-source">Udemy</div><div class="cert-name">iOS &amp; Swift — The Complete iOS App Development Bootcamp</div></div>
+      </a>
+      <a class="cert-card" href="https://www.udemy.com/certificate/UC-82e90ad9-2076-4d77-9d46-6b236c1a68c8/" target="_blank">
+        <div class="cert-icon ci-u">🎓</div>
+        <div><div class="cert-source">Udemy</div><div class="cert-name">Flutter &amp; Dart — The Complete Guide</div></div>
+      </a>
+      <a class="cert-card" href="https://www.udemy.com/certificate/UC-1f958b67-7c6d-4894-8975-8db88cc154a0/" target="_blank">
+        <div class="cert-icon ci-u">🎓</div>
+        <div><div class="cert-source">Udemy</div><div class="cert-name">Android Development NDK — C++, FFMPEG, Google Oboe</div></div>
+      </a>
+      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/4fe4636d8a4c06081d0ac8973587134cf15f6d54d1754d079f15d1dd54ea1d51" target="_blank">
+        <div class="cert-icon ci-l">💼</div>
+        <div><div class="cert-source">LinkedIn Learning</div><div class="cert-name">Android App Development: Design Patterns for Mobile Architecture</div></div>
+      </a>
+      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/aed688f52b1362ea803afdfe96033003e9d05d98d0c45bddd6c73b899c9cd597" target="_blank">
+        <div class="cert-icon ci-l">💼</div>
+        <div><div class="cert-source">LinkedIn Learning</div><div class="cert-name">Concurrent Programming with Android: Threads, Workers &amp; Coroutines</div></div>
+      </a>
+      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/d55ebbcd0d687965644977ca70f224bac313cc82c567a6e185193dd9cf54a73f" target="_blank">
+        <div class="cert-icon ci-l">💼</div>
+        <div><div class="cert-source">LinkedIn Learning</div><div class="cert-name">Software Architecture: From Developer to Architect</div></div>
+      </a>
+      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/eacb846bff59defbd5db5301d78383a763edc643c3c730fe6aa0fefa764c8f60" target="_blank">
+        <div class="cert-icon ci-l">💼</div>
+        <div><div class="cert-source">LinkedIn Learning</div><div class="cert-name">Scrum: The Basics</div></div>
+      </a>
+      <a class="cert-card" href="https://www.coursera.org/account/accomplishments/professional-cert/W58QYFZKRRCX" target="_blank">
+        <div class="cert-icon ci-g">🔒</div>
+        <div><div class="cert-source">Google / Coursera</div><div class="cert-name">Google IT Support Professional Certificate</div></div>
+      </a>
+      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/3c6c83a68ae7cf7dea16852e04082eafd90e33ad0578be240402ce929244bfe4" target="_blank">
+        <div class="cert-icon ci-l">💼</div>
+        <div><div class="cert-source">LinkedIn Learning</div><div class="cert-name">Agile Development Practices</div></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EDUCATION ═══════════ -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Education</div>
+    <h2 class="section-title">Academic background</h2>
+    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;max-width:540px;border-left:3px solid var(--green);">
+      <div style="font-size:18px;font-weight:600;color:var(--white);margin-bottom:4px;">BS Information Technology</div>
+      <div style="font-size:14px;color:var(--green);margin-bottom:8px;">University of the Punjab</div>
+      <div style="font-family:var(--font-mono);font-size:12px;color:var(--grey);">2013 – 2017</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact" style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's talk</h2>
+
+    <div class="contact-grid">
+      <div>
+        <div class="availability-badge">
+          <div class="avail-dot"></div>
+          <span class="avail-text">Open to Lead roles in Europe</span>
+        </div>
+        <p class="contact-intro">If you're building something serious on mobile — Android, iOS, or cross-platform — I'd like to hear about it. Open to Lead Android and Mobile Lead roles in Europe. Remote-first or relocation with visa sponsorship support.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="https://github.com/Hassaan10" target="_blank" class="btn-secondary">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/hassaan-raza-89a142112/" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+          <a href="https://hassaan10.github.io/resources/Hassaan Raza CV Mobile SSE Lead.pdf" target="_blank" class="btn-primary">Download CV</a>
+        </div>
+      </div>
+
+      <div class="contact-links">
+        <a href="mailto:hassaanraza12@gmail.com" class="contact-link">
+          <span class="cl-icon">✉️</span>
+          <div><span class="cl-label">Email</span><span class="cl-val">hassaanraza12@gmail.com</span></div>
+        </a>
+        <a href="tel:+971568261424" class="contact-link">
+          <span class="cl-icon">📱</span>
+          <div><span class="cl-label">Mobile</span><span class="cl-val">+971 568261424</span></div>
+        </a>
+        <a href="https://github.com/Hassaan10" target="_blank" class="contact-link">
+          <span class="cl-icon">⌨️</span>
+          <div><span class="cl-label">GitHub</span><span class="cl-val">github.com/Hassaan10</span></div>
+        </a>
+        <a href="https://www.linkedin.com/in/hassaan-raza-89a142112/" target="_blank" class="contact-link">
+          <span class="cl-icon">💼</span>
+          <div><span class="cl-label">LinkedIn</span><span class="cl-val">linkedin.com/in/hassaan-raza-89a142112</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="container">
+    Hassaan Raza · Lead Android &amp; Mobile Engineer · Abu Dhabi, UAE<br/>
+    <span style="color:var(--grey2);font-size:12px;">Open to Lead roles in Europe · hassaanraza12@gmail.com</span>
+  </div>
+</footer>
 
 </body>
-
 </html>
